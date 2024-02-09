@@ -1,0 +1,10 @@
+dill>=0.3.6
+numpy>=1.24.2
+matplotlib>=3.7.1
+scipy>=1.10.1
+pymunk>=6.4.0
+multiprocess>=0.70.14
+pyglet>=1.5.27
+lxml>=4.9.2
+mlpro>=2.0.0
+river>=0.15.0,!=0.20.0,!=0.20.1

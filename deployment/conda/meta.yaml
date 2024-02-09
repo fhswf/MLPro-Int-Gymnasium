@@ -1,0 +1,36 @@
+{% set name = "mypackage" %}
+{% set version = "0.0.0" %}
+
+package:
+  name: "{{ name|lower }}"
+  version: "{{ version }}"
+
+source:
+  path: ..
+
+
+build:
+  number: 0
+  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv "
+
+requirements:
+  host:
+    - pip
+    - python
+  run:
+    - python
+    - matplotlib
+    - numpy
+    - dill
+    - mlpro
+
+test:
+  imports:
+    - mypackage
+
+about:
+  home: https://github.com/...
+  license: ...
+  license_family: ...
+  summary: ...
+  description: ...

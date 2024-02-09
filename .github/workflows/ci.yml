@@ -1,0 +1,166 @@
+# This workflow will install Python dependencies, run tests and lint with a single version of Python
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
+
+name: Unit Tests
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  deps_gen:
+    runs-on: ubuntu-latest
+    outputs:
+      trigger_build: ${{ steps.trigger_build.outputs.build }}
+
+    steps:
+      - name: Checkout Codes
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.CI_UNIT_TEST }}
+          ref: ${{ github.head_ref }}
+
+      - name: Generate dependecies list
+        run: |
+          awk '/^[[]/{f=0} /full/{f=1;next} {sub(/^[ \t]+|[ \t]/, "")} f' setup.cfg | tr -d "<" | tr -d ">" | tr -s "==" "," > doc/rtd/content/01_welcome/sub/deps.txt
+          awk '/^[[]/{f=0} /full/{f=1;next} {sub(/^[ \t]+|[ \t]/, "")} f' setup.cfg > requirements.txt
+
+      - name: Commit files
+        id: auto-commit-action
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Dependencies Generation
+          branch: ${{ github.head_ref }}
+          commit_user_name: MLPro Administration
+          commit_user_email: mlpro@listen.fh-swf.de
+
+      - name: "Run if changes not detected"
+        if: steps.auto-commit-action.outputs.changes_detected == 'false'
+        id: trigger_build
+        run: echo "build=true" >> $GITHUB_OUTPUT
+
+  ubuntu_test:
+    runs-on: ubuntu-latest
+    needs: deps_gen
+    if: needs.deps_gen.outputs.trigger_build == 'true'
+    strategy:
+      matrix:
+        python-version: ['3.9', '3.10', '3.11']
+
+    steps:
+    - name: Checkout Codes
+      uses: actions/checkout@v3
+      with:
+        ref: ${{ github.head_ref }}
+
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+        
+    - name: Install dependencies
+      run: |
+        pip install pip --upgrade
+        pip install flake8 pytest
+        pip install -r requirements.txt
+        
+    - name: Lint with flake8
+      run: |
+        # stop the build if there are Python syntax errors or undefined names
+        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+        # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
+        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+
+    - name: Test with pytest
+      run: |
+        make pytest
+
+  doc_test:
+    runs-on: ubuntu-latest
+    needs: deps_gen
+    if: needs.deps_gen.outputs.trigger_build == 'true'
+    strategy:
+      matrix:
+        python-version: ['3.10']
+
+    steps:
+    - name: Checkout Codes
+      uses: actions/checkout@v3
+      with:
+        ref: ${{ github.head_ref }}
+
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+        
+    - name: Install dependencies
+      run: |
+        pip install flake8 pytest
+        pip install -r requirements.txt
+        pip install sphinx
+        pip install sphinx-rtd-theme
+        pip install sphinx-copybutton
+        pip install sphinx_multitoc_numbering
+
+    - name: Build the Documentation
+      run: |
+        make docu
+
+  windows_test:
+    runs-on: windows-latest
+    needs: deps_gen
+    if: needs.deps_gen.outputs.trigger_build == 'true'
+    strategy:
+      matrix:
+        python-version: ['3.11']
+
+    steps:
+    - name: Checkout Codes
+      uses: actions/checkout@v3
+      with:
+        ref: ${{ github.head_ref }}
+
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+        
+    - name: Install dependencies
+      run: |
+        pip install flake8 pytest
+        pip install -r requirements.txt
+
+    - name: Test with pytest
+      run: |
+        make pytest
+
+  macos_test:
+    runs-on: macos-latest
+    needs: deps_gen
+    if: needs.deps_gen.outputs.trigger_build == 'true'
+    strategy:
+      matrix:
+        python-version: ['3.11']
+
+    steps:
+    - name: Checkout Codes
+      uses: actions/checkout@v3
+      with:
+        ref: ${{ github.head_ref }}
+
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+        
+    - name: Install dependencies
+      run: |
+        pip install flake8 pytest
+        pip install -r requirements.txt
+
+    - name: Test with pytest
+      run: |
+        make pytest

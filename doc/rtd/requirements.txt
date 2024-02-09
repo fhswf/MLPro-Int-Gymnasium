@@ -1,0 +1,11 @@
+dill>=0.3.6
+numpy>=1.24.2
+matplotlib>=3.7.1
+transformations>=2022.9.26
+multiprocess>=0.70.14
+sphinxcontrib-napoleon
+sphinx-copybutton
+sphinx_multitoc_numbering
+sphinx
+sphinx_rtd_theme
+sphinxcontrib-jquery
