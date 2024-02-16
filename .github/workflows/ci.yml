@@ -22,10 +22,6 @@ jobs:
           token: ${{ secrets.CI_UNIT_TEST }}
           ref: ${{ github.head_ref }}
 
-      - name: Generate dependecies list
-        run: |
-          awk '/^[[]/{f=0} /full/{f=1;next} {sub(/^[ \t]+|[ \t]/, "")} f' setup.cfg > requirements.txt
-
       - name: Commit files
         id: auto-commit-action
         uses: stefanzweifel/git-auto-commit-action@v4
