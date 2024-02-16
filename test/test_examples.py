@@ -1,6 +1,6 @@
 ## -------------------------------------------------------------------------------------------------
-## -- Project : MLPro - A Synoptic Framework for Standardized Machine Learning Tasks
-## -- Package : mlpro
+## -- Project : MLPro - The integrative middleware framework for standardized machine learning
+## -- Package : mlpro_int_gymnasium
 ## -- Module  : test_example.py
 ## -------------------------------------------------------------------------------------------------
 ## -- History :
