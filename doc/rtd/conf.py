@@ -19,10 +19,10 @@ sys.path.insert(0, os.path.abspath('../../src'))
 
 project = 'MLPro Documentations'
 copyright = '2022 South Westphalia University of Applied Sciences, Germany'
-author = 'Detlef Arend, Steve Yuwono, Mochammad Rizky Diprasetya et al'
+author = 'Detlef Arend, Steve Yuwono, Laxmikant Shrikant Baheti et al'
 
 # The full version, including alpha/beta/rc tags
-release = '1.0.0'
+release = '0.1.0'
 
 
 # -- General configuration ---------------------------------------------------
@@ -83,6 +83,6 @@ html_static_path = ['_static']
 html_context = {
   'display_github': True,
   'github_user': 'fhswf',
-  'github_repo': 'MLPro',
+  'github_repo': 'MLPro-Int-Gymnasium',
   'github_version': 'main/doc/docs/',
 }
