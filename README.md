@@ -9,7 +9,7 @@
 [![PyPI Last Month Downloads](https://static.pepy.tech/personalized-badge/mlpro-int-gymnasium?period=month&units=international_system&left_color=blue&right_color=orange&left_text=PyPI%20Last%20Month%20Downloads)](https://pepy.tech/project/mlpro-int-gymnasium)
 
 
-<img src="https://github.com/fhswf/MLPro-Int-gymnasium/blob/main/doc/logo/original/logo.png?raw=True" align="right" width="40%"/>
+<img src="https://github.com/fhswf/MLPro-Int-Gymnasium/blob/main/doc/logo/original/logo.png?raw=True" align="right" width="40%"/>
 
 # MLPro-Int-Gymnasium - Integration between Gymnasium and MLPro
 Welcome to MLPro-Int-Gymnasium, an extension to MLPro to integrate the Gymnasium package. MLPro is a middleware framework for standardized machine learning in Python. It is developed by the South Westphalia University of Applied Sciences, Germany, and provides standards, templates, and processes for hybrid machine learning applications. Gymnasium, in turn, provides a diverse suite of reinforcement learning environments.
