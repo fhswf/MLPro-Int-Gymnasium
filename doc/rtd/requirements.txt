@@ -1,5 +1,6 @@
 mlpro[full]
 gymnasium[all]>=0.29
+pandas>=2.1.3
 
 sphinxcontrib-napoleon
 sphinx-copybutton

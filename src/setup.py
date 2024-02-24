@@ -13,7 +13,8 @@ packages=['mlpro_int_gymnasium'],
 extras_require={
     "full": [
         "mlpro[full]>=1.3.1",
-        "gymnasium[all]>=0.29"
+        "gymnasium[all]>=0.29",
+        "pandas>=2.1.3"
     ],
 },
 
