@@ -1,0 +1,9 @@
+.. _howtos_rl:
+Reinforcement Learning
+===========================
+
+.. toctree::
+   :maxdepth: 1
+   :glob:
+
+   01_howtos_rl/* 

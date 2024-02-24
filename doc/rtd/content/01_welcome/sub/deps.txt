@@ -1,5 +1,0 @@
-dill
-numpy
-matplotlib
-multiprocess
-mlpro

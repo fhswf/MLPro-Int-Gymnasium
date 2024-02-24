@@ -1,0 +1,9 @@
+.. _howtos_gt:
+Dynamic Games in Game Theory
+================================
+
+.. toctree::
+   :maxdepth: 1
+   :glob:
+
+   02_howtos_gt/* 
