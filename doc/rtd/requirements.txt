@@ -1,5 +1,5 @@
 mlpro[full]
-gymnasium[all]>=0.29
+gymnasium>=0.29
 
 sphinxcontrib-napoleon
 sphinx-copybutton
