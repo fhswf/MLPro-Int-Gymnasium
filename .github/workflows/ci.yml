@@ -26,6 +26,10 @@ jobs:
           token: ${{ secrets.CI_UNIT_TEST }}
           ref: ${{ github.head_ref }}
 
+      - name: Generate dependecies list
+        run: |
+          awk '/^[[]/{f=0} /full/{f=1;next} {sub(/^[ \t]+|[ \t]/, "")} f' setup.cfg > requirements.txt
+
       - name: Commit files
         id: auto-commit-action
         uses: stefanzweifel/git-auto-commit-action@v4
@@ -82,7 +86,7 @@ jobs:
     if: needs.deps_gen.outputs.trigger_build == 'true'
     strategy:
       matrix:
-        python-version: ['3.10']
+        python-version: ['3.11']
 
     steps:
     - name: Checkout Codes
