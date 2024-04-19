@@ -10,10 +10,11 @@
 ## -- 2023-04-19  1.0.1     MRD      Refactor reset function
 ## -- 2023-08-21  1.0.2     MRD      Saving the seed in variable self._p_seed
 ## -- 2024-02-16  1.0.3     SY       Relocation from MLPro to MLPro-Int-Gymnasium
+## -- 2024-04-19  1.0.4     DA       Alignment with MLPro 1.4.0
 ## -------------------------------------------------------------------------------------------------
 
 """
-Ver. 1.0.3 (2024-02-16)
+Ver. 1.0.4 (2024-04-19)
 
 This module provides wrapper classes for Gym environments from Farama-Foundation Gymnasium.
 
@@ -22,7 +23,7 @@ See also: https://github.com/Farama-Foundation/Gymnasium
 """
 
 import gymnasium as gym
-from mlpro.wrappers.models import Wrapper
+from mlpro.wrappers import Wrapper
 from mlpro.rl import *
 
 
