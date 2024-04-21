@@ -22,7 +22,7 @@ copyright = '2024 South Westphalia University of Applied Sciences, Germany'
 author = 'Detlef Arend, Steve Yuwono, Laxmikant Shrikant Baheti et al'
 
 # The full version, including alpha/beta/rc tags
-release = '1.0.0'
+release = '1.0.1'
 
 
 # -- General configuration ---------------------------------------------------
