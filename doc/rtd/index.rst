@@ -17,11 +17,12 @@ or the other way around.
 
 
 **Preparation**
-   Before running the examples, please install the latest versions of MLPro, Gymnasium, and MLPro-Int-Gymnasium as follows:
+   
+Before running the examples, please install the latest versions of MLPro, Gymnasium, and MLPro-Int-Gymnasium as follows:
 
-   .. code-block:: bash
+.. code-block:: bash
 
-      pip install mlpro-int-gymnasium[full] --upgrade
+   pip install mlpro-int-gymnasium[full] --upgrade
 
 
 **See also**
