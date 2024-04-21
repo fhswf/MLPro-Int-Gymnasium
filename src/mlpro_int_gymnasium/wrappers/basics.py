@@ -11,10 +11,11 @@
 ## -- 2023-08-21  1.0.2     MRD      Saving the seed in variable self._p_seed
 ## -- 2024-02-16  1.0.3     SY       Relocation from MLPro to MLPro-Int-Gymnasium
 ## -- 2024-04-19  1.0.4     DA       Alignment with MLPro 1.4.0
+## -- 2024-04-21  1.0.5     DA       Method WrEnvGYM2MLPro._complete_state(): recovery of render mode
 ## -------------------------------------------------------------------------------------------------
 
 """
-Ver. 1.0.4 (2024-04-19)
+Ver. 1.0.5 (2024-04-21)
 
 This module provides wrapper classes for Gym environments from Farama-Foundation Gymnasium.
 
@@ -58,18 +59,19 @@ class WrEnvGYM2MLPro(Wrapper, Environment):
 
 ## -------------------------------------------------------------------------------------------------
     def __init__(self,
-                 p_gym_env,  
+                 p_gym_env:gym.Env,  
                  p_state_space: MSpace = None,  
                  p_action_space: MSpace = None,  
                  p_seed=None,
                  p_visualize:bool=True,
                  p_logging=Log.C_LOG_ALL):
 
-        self._gym_env = p_gym_env
-        self._p_seed = p_seed
+        self._gym_env             = p_gym_env
+        self._p_seed              = p_seed
             
-        self._gym_env_id = self._gym_env.env.spec.id
-        self.C_NAME      = '(' + self._gym_env_id + ')'
+        self._gym_env_id          = self._gym_env.env.spec.id
+        self._gym_env_render_mode = self._gym_env.render_mode
+        self.C_NAME               = '(' + self._gym_env_id + ')'
 
         Environment.__init__(self, p_mode=Environment.C_MODE_SIM, p_latency=None, p_visualize=p_visualize, p_logging=p_logging)
         Wrapper.__init__(self, p_logging=p_logging)
@@ -114,7 +116,7 @@ class WrEnvGYM2MLPro(Wrapper, Environment):
 
 ## -------------------------------------------------------------------------------------------------
     def _complete_state(self, p_path:str, p_os_sep:str, p_filename_stub:str):
-        self._gym_env = gym.make(self._gym_env_id)
+        self._gym_env = gym.make(self._gym_env_id, render_mode=self._gym_env_render_mode)
 
 
 ## -------------------------------------------------------------------------------------------------
