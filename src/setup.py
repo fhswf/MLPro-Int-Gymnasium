@@ -14,7 +14,7 @@ extras_require={
     "full": [
         "mlpro[full]>=1.4.0",
         "swig>=4.2.0",
-        "box2d-py>=2.3.8",
+        "box2d-py==2.3.5",
         "gymnasium[all]>=0.29"
     ],
 },
