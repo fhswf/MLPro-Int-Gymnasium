@@ -14,7 +14,7 @@ extras_require={
     "full": [
         "mlpro[full]>=1.4.0",
         "swig==4.*",
-        "gymnasium[all]>=0.29"
+        "gymnasium>=0.29"
     ],
 },
 
