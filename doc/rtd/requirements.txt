@@ -1,5 +1,4 @@
 mlpro[full]>=1.4.0
-swig==4.*
 gymnasium>=0.29
 
 sphinxcontrib-napoleon
