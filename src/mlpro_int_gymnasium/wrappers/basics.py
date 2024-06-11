@@ -12,10 +12,11 @@
 ## -- 2024-02-16  1.0.3     SY       Relocation from MLPro to MLPro-Int-Gymnasium
 ## -- 2024-04-19  1.0.4     DA       Alignment with MLPro 1.4.0
 ## -- 2024-04-21  1.0.5     DA       Method WrEnvGYM2MLPro._complete_state(): recovery of render mode
+## -- 2024-06-11  1.0.6     SY       Removing seeding
 ## -------------------------------------------------------------------------------------------------
 
 """
-Ver. 1.0.5 (2024-04-21)
+Ver. 1.0.6 (2024-06-11)
 
 This module provides wrapper classes for Gym environments from Farama-Foundation Gymnasium.
 
@@ -61,13 +62,11 @@ class WrEnvGYM2MLPro(Wrapper, Environment):
     def __init__(self,
                  p_gym_env:gym.Env,  
                  p_state_space: MSpace = None,  
-                 p_action_space: MSpace = None,  
-                 p_seed=None,
+                 p_action_space: MSpace = None,
                  p_visualize:bool=True,
                  p_logging=Log.C_LOG_ALL):
 
         self._gym_env             = p_gym_env
-        self._p_seed              = p_seed
             
         self._gym_env_id          = self._gym_env.env.spec.id
         self._gym_env_render_mode = self._gym_env.render_mode
