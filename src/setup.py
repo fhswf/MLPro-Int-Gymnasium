@@ -2,7 +2,7 @@ from setuptools import setup
 
 
 setup(name='mlpro-int-gymnasium',
-version='1.0.1',
+version='1.0.2',
 description='MLPro: Integration Gymnasium',
 author='MLPro Team',
 author_mail='mlpro@listen.fh-swf.de',
@@ -13,7 +13,7 @@ packages=['mlpro_int_gymnasium'],
 extras_require={
     "full": [
         "mlpro[full]>=1.4.0",
-        "gymnasium[all]>=0.29"
+        "gymnasium>=0.29"
     ],
 },
 
