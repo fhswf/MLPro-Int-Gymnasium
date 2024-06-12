@@ -138,7 +138,7 @@ jobs:
     - name: Test with pytest
       run: |
         make pytest
-
+        
   macos_test:
     runs-on: macos-latest
     needs: deps_gen
@@ -157,13 +157,12 @@ jobs:
       uses: actions/setup-python@v4
       with:
         python-version: ${{ matrix.python-version }}
-        
+
     - name: Install dependencies
       run: |
         pip install flake8 pytest
         pip install -r requirements.txt
         pip install -e .
-
     - name: Test with pytest
       run: |
         make pytest
