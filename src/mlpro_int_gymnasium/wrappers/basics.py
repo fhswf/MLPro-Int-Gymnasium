@@ -13,10 +13,11 @@
 ## -- 2024-04-19  1.0.4     DA       Alignment with MLPro 1.4.0
 ## -- 2024-04-21  1.0.5     DA       Method WrEnvGYM2MLPro._complete_state(): recovery of render mode
 ## -- 2024-06-11  1.0.6     SY       Update seeding
+## -- 2024-10-01  1.0.7     SY       Refactoring due to errors in environments than classic control
 ## -------------------------------------------------------------------------------------------------
 
 """
-Ver. 1.0.6 (2024-06-11)
+Ver. 1.0.7 (2024-10-01)
 
 This module provides wrapper classes for Gym environments from Farama-Foundation Gymnasium.
 
@@ -190,7 +191,13 @@ class WrEnvGYM2MLPro(Wrapper, Environment):
 
         # 2 Create state object from Gym observation
         state = State(self._state_space)
-        state.set_values(obs.get_data())
+        
+        try:
+            dim_obs = len(obs.get_data())
+            state.set_values(obs.get_data())
+        except:
+            state.set_values(np.array([obs.get_data()]))
+        
         self._set_state(state)
 
 
@@ -236,7 +243,12 @@ class WrEnvGYM2MLPro(Wrapper, Environment):
 
         # 3 Create state object from Gym observation
         state = State(self._state_space, p_terminal=termination, p_timeout=truncation)
-        state.set_values(obs.get_data())
+        
+        try:
+            dim_obs = len(obs.get_data())
+            state.set_values(obs.get_data())
+        except:
+            state.set_values(np.array([obs.get_data()]))
 
         # 4 Create reward object
         self._last_reward = Reward(Reward.C_TYPE_OVERALL)
@@ -341,7 +353,21 @@ class WrEnvGYM2MLPro(Wrapper, Environment):
             the number of the cycle limit.
 
         """
-        return self._gym_env._max_episode_steps
+        try:
+            return self._gym_env._max_episode_steps
+        except:
+            pass
+        
+        try:
+            if self._gym_env.spec.max_episode_steps is not None:
+                return self._gym_env.spec.max_episode_steps
+            else:
+                pass
+        except:
+            pass
+        
+        return 0
+            
 
 
 
