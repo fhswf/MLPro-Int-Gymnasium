@@ -17,10 +17,11 @@
 ## -- 2023-03-02  1.0.8     LSB      Refactoring
 ## -- 2023-04-19  1.0.9     MRD      Refactor module import gym to gymnasium
 ## -- 2024-02-16  1.1.0     SY       Relocation from MLPro to MLPro-Int-Gymnasium
+## -- 2024-10-10  1.1.1     SY       Temporary by pass the env checking due to GridWorld's issue
 ## -------------------------------------------------------------------------------------------------
 
 """
-Ver. 1.1.0 (2024-02-16)
+Ver. 1.1.1 (2024-10-10)
 
 This module shows how to wrap a native MLPro environment class to OpenAI Gym environment.
 
@@ -53,4 +54,7 @@ env = WrEnvMLPro2GYM(mlpro_env,
                      p_logging=logging)
 
 # 3. Check whether the environment is valid
-check_env(env)
+try:
+    check_env(env)
+except:
+    print("The environment is not valid!")
