@@ -72,6 +72,7 @@ jobs:
         pip install pip --upgrade
         pip install flake8 pytest
         pip install -r requirements.txt
+        pip install -e .
         
     - name: Lint with flake8
       run: |
@@ -107,6 +108,7 @@ jobs:
       run: |
         pip install flake8 pytest
         pip install -r requirements.txt
+        pip install -e .
         pip install sphinx
         pip install sphinx-rtd-theme
         pip install sphinx-copybutton
@@ -139,6 +141,7 @@ jobs:
       run: |
         pip install flake8 pytest
         pip install -r requirements.txt
+        pip install -e .
 
     - name: Test with pytest
       run: |
@@ -167,6 +170,7 @@ jobs:
       run: |
         pip install flake8 pytest
         pip install -r requirements.txt
+        pip install -e .
 
     - name: Test with pytest
       run: |
