@@ -1,14 +1,5 @@
-## -------------------------------------------------------------------------------------------------
-## -- Project   : MLPro - The integrative middleware framework for standardized machine learning
-## -- Extension : MLPro-Int-scikit-learn - Integration of scikit-learn into MLPro
-## -- Workflow  : ci.yml
-## -------------------------------------------------------------------------------------------------
-## -- History :
-## -- yyyy-mm-dd  Ver.      Auth.    Description
-## -- 2024        1.0.0     MRD      Creation 
-## -- 2024-11-28  1.1.0     DA       Updated the version range for Python to 3.10 - 3.13
-## -- 2024-12-10  1.2.0     DA       Update actions/checkout to v4, actions/setup-python to v5
-## -------------------------------------------------------------------------------------------------
+# This workflow will install Python dependencies, run tests and lint with a single version of Python
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
 
 name: Unit Tests
 
@@ -20,7 +11,7 @@ on:
   schedule:
     - cron: '00 1 * * 1'
   workflow_dispatch:
-    
+
 
 jobs:
   deps_gen:
@@ -30,7 +21,7 @@ jobs:
 
     steps:
       - name: Checkout Codes
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
         with:
           token: ${{ secrets.CI_UNIT_TEST }}
           ref: ${{ github.head_ref }}
@@ -55,16 +46,16 @@ jobs:
     if: needs.deps_gen.outputs.trigger_build == 'true'
     strategy:
       matrix:
-        python-version: ['3.10', '3.11', '3.12', '3.13']
+        python-version: ['3.10', '3.11', '3.12']
 
     steps:
     - name: Checkout Codes
-      uses: actions/checkout@v4
+      uses: actions/checkout@v3
       with:
         ref: ${{ github.head_ref }}
 
     - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v5
+      uses: actions/setup-python@v4
       with:
         python-version: ${{ matrix.python-version }}
         
@@ -73,6 +64,7 @@ jobs:
         pip install pip --upgrade
         pip install flake8 pytest
         pip install -r requirements.txt
+        pip install -e .
         
     - name: Lint with flake8
       run: |
@@ -91,16 +83,16 @@ jobs:
     if: needs.deps_gen.outputs.trigger_build == 'true'
     strategy:
       matrix:
-        python-version: ['3.11']
+        python-version: ['3.12']
 
     steps:
     - name: Checkout Codes
-      uses: actions/checkout@v4
+      uses: actions/checkout@v3
       with:
         ref: ${{ github.head_ref }}
 
     - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v5
+      uses: actions/setup-python@v4
       with:
         python-version: ${{ matrix.python-version }}
         
@@ -108,6 +100,7 @@ jobs:
       run: |
         pip install flake8 pytest
         pip install -r requirements.txt
+        pip install -e .
         pip install sphinx
         pip install sphinx-rtd-theme
         pip install sphinx-copybutton
@@ -123,16 +116,16 @@ jobs:
     if: needs.deps_gen.outputs.trigger_build == 'true'
     strategy:
       matrix:
-        python-version: ['3.11']
+        python-version: ['3.12']
 
     steps:
     - name: Checkout Codes
-      uses: actions/checkout@v4
+      uses: actions/checkout@v3
       with:
         ref: ${{ github.head_ref }}
 
     - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v5
+      uses: actions/setup-python@v4
       with:
         python-version: ${{ matrix.python-version }}
         
@@ -140,35 +133,36 @@ jobs:
       run: |
         pip install flake8 pytest
         pip install -r requirements.txt
+        pip install -e .
 
     - name: Test with pytest
       run: |
         make pytest
-
+        
   macos_test:
     runs-on: macos-latest
     needs: deps_gen
     if: needs.deps_gen.outputs.trigger_build == 'true'
     strategy:
       matrix:
-        python-version: ['3.11']
+        python-version: ['3.12']
 
     steps:
     - name: Checkout Codes
-      uses: actions/checkout@v4
+      uses: actions/checkout@v3
       with:
         ref: ${{ github.head_ref }}
 
     - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v5
+      uses: actions/setup-python@v4
       with:
         python-version: ${{ matrix.python-version }}
-        
+
     - name: Install dependencies
       run: |
         pip install flake8 pytest
         pip install -r requirements.txt
-
+        pip install -e .
     - name: Test with pytest
       run: |
         make pytest
