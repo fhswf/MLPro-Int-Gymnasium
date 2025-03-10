@@ -17,6 +17,6 @@ Welcome to MLPro-Int-Gymnasium, an extension to MLPro to integrate the Gymnasium
 MLPro-Int-Gymnasium offers wrapper classes that allow the reuse of environments from Gymnasium in MLPro, or the other way around.
 
 ### Learn more
-[MLPro - Machine Learning Professional](https://mlpro.readthedocs.io)   
+[MLPro - The integrative middleware framework for standardized machine learning in Python](https://mlpro.readthedocs.io)   
 [MLPro-Int-Gymnasium - Integration of Gymnasium into MLPro](https://mlpro-int-gymnasium.readthedocs.io)   
 [Gymnasium - An API standard for reinforcement learning with a diverse collection of reference environments](https://gymnasium.farama.org/index.html)   
