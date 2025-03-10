@@ -26,11 +26,12 @@ Before running the examples, please install the latest versions of MLPro, Gymnas
 
 
 **See also**
-   - `MLPro - Machine Learning Professional <https://mlpro.readthedocs.io>`_ 
+   - `MLPro - The integrative middleware framework for standardized machine learning in Python <https://mlpro.readthedocs.io>`_ 
    - `MLPro-RL - Sub-framework for reinforcement learning <https://mlpro.readthedocs.io/en/latest/content/03_machine_learning/mlpro_rl/main.html>`_
    - `Gymnasium - An API standard for reinforcement learning with a diverse collection of reference environments <https://gymnasium.farama.org/index.html>`_ 
-   - `Further MLPro extensions <https://mlpro.readthedocs.io/en/latest/content/04_extensions/main.html>`_
    - `MLPro-Int-Gymnasium on GitHub <https://github.com/fhswf/MLPro-Int-Gymnasium>`_
+   - `MLPro-Int-Gymnasium on PyPI <https://pypi.org/project/mlpro-int-gymnasium>`_
+   - `Further MLPro extensions <https://mlpro.readthedocs.io/en/latest/content/04_extensions/main.html>`_
 
 
 .. toctree::
