@@ -1,2 +1,2 @@
 mlpro[full]>=1.4.0
-gymnasium>=0.29
+gymnasium>=0.29,<=1.1.0
