@@ -14,7 +14,8 @@ extras_require={
     "full": [
         "mlpro[full]>=1.4.0",
         "gymnasium>=0.29",
-        "pygame>=2.1.3"
+        "pygame>=2.1.3",
+        "setuptools>=42"
     ],
 },
 
