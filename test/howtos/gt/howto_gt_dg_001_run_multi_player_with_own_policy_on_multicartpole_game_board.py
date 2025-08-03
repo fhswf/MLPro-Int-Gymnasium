@@ -41,6 +41,10 @@ You will learn:
 
 from mlpro.rl import *
 from mlpro.gt import *
+from mlpro.bf import *
+from mlpro.bf.math import *
+from mlpro.bf.systems import *
+from mlpro.bf.plot import *
 from mlpro_int_gymnasium.boards.multicartpole import MultiCartPolePGT
 import random
 import numpy as np
@@ -167,5 +171,6 @@ mygame  = MyGame(
     p_cycle_limit=200,
     p_visualize=visualize,
     p_logging=logging )
+
 
 mygame.run()
