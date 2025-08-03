@@ -29,7 +29,7 @@ See also: https://github.com/Farama-Foundation/Gymnasium
 import gymnasium as gym
 from mlpro.wrappers import Wrapper
 from mlpro.rl import *
-from mlpro,bf import Log
+from mlpro.bf import Log
 
 # Export list for public API
 __all__ = [
