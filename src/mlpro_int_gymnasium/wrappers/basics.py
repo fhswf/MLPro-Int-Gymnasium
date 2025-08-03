@@ -30,6 +30,7 @@ import gymnasium as gym
 from mlpro.wrappers import Wrapper
 from mlpro.rl import *
 from mlpro.bf import *
+from mlpro.bf.math import *
 
 # Export list for public API
 __all__ = [
