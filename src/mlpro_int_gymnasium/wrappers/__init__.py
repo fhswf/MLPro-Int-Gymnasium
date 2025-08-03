@@ -1,1 +1,1 @@
-from mlpro_int_gymnasium.wrappers.basics import *
+from .basics import *
