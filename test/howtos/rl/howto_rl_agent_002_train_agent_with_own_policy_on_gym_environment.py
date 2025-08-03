@@ -54,6 +54,7 @@ from mlpro.bf import *
 from mlpro.bf.math import *
 from mlpro.bf.systems import *
 from mlpro.bf.plot import *
+from mlpro.bf.ml import *
 from mlpro.rl import *
 from mlpro_int_gymnasium.wrappers import WrEnvGYM2MLPro
 import gymnasium as gym
