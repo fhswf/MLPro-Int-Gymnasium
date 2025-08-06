@@ -52,6 +52,7 @@ from mlpro.bf.plot import *
 from mlpro.bf.ml import *
 from mlpro_int_gymnasium.envs.multicartpole import MultiCartPole
 import random
+import numpy as np
 from pathlib import Path
 
 
