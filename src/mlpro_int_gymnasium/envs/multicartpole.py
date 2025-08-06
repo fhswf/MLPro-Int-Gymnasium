@@ -44,6 +44,7 @@ import gymnasium as gym
 from datetime import timedelta
 from mlpro.bf.systems import *
 from mlpro.bf.plot import *
+from mlpro.bf.math import *
 
 # Export list for public API
 __all__ = ['MultiCartPole']
@@ -303,6 +304,7 @@ class MultiCartPole (Environment):
 ## -------------------------------------------------------------------------------------------------
     def update_plot(self, **p_kwargs):
         for env in self._envs: env.update_plot( **p_kwargs )
+
 
 
 
