@@ -27,6 +27,7 @@ See also: https://github.com/Farama-Foundation/Gymnasium
 """
 
 import gymnasium as gym
+import numpy as np
 from mlpro.wrappers import Wrapper
 from mlpro.rl import *
 from mlpro.bf import *
