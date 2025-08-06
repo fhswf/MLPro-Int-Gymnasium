@@ -14,10 +14,11 @@
 ## -- 2024-04-21  1.0.5     DA       Method WrEnvGYM2MLPro._complete_state(): recovery of render mode
 ## -- 2024-06-11  1.0.6     SY       Update seeding
 ## -- 2024-10-01  1.0.7     SY       Refactoring due to errors in environments than classic control
+## -- 2025-08-03  1.0.8     SY       Refactoring
 ## -------------------------------------------------------------------------------------------------
 
 """
-Ver. 1.0.7 (2024-10-01)
+Ver. 1.0.8 (2025-08-03)
 
 This module provides wrapper classes for Gym environments from Farama-Foundation Gymnasium.
 
@@ -26,8 +27,19 @@ See also: https://github.com/Farama-Foundation/Gymnasium
 """
 
 import gymnasium as gym
+import numpy as np
 from mlpro.wrappers import Wrapper
 from mlpro.rl import *
+from mlpro.bf import *
+from mlpro.bf.math import *
+from mlpro.bf.systems import *
+from mlpro.bf.plot import *
+
+# Export list for public API
+__all__ = [
+    'WrEnvGYM2MLPro',
+    'WrEnvMLPro2GYM'
+    ]
 
 
 
