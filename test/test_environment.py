@@ -21,6 +21,10 @@ import random
 import numpy as np
 from mlpro.rl.models import *
 from mlpro_int_gymnasium.envs.multicartpole import MultiCartPole
+from mlpro.bf import *
+from mlpro.bf.math import *
+from mlpro.bf.systems import *
+from mlpro.bf.plot import *
 
 
 ## -------------------------------------------------------------------------------------------------

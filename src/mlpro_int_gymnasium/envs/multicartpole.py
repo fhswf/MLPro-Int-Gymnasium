@@ -25,10 +25,11 @@
 ## -- 2023-02-22  1.3.3     DA       Refactoring
 ## -- 2023-04-19  1.3.4     MRD      Refactor module import gym to gymnasium
 ## -- 2024-02-16  1.3.5     SY       Relocation from MLPro to MLPro-Int-Gymnasium
+## -- 2025-08-03  1.3.6     SY       Refactoring
 ## -------------------------------------------------------------------------------------------------
 
 """
-Ver. 1.3.5 (2024-02-16)
+Ver. 1.3.6 (2025-08-03)
 
 This module provides an environment with multivariate state and action spaces based on the 
 OpenAI Gym environment 'CartPole-v1'. 
@@ -36,9 +37,17 @@ OpenAI Gym environment 'CartPole-v1'.
 
 
 from mlpro.rl.models import *
+from mlpro.bf import *
 from mlpro_int_gymnasium.wrappers import WrEnvGYM2MLPro
 import numpy as np
 import gymnasium as gym
+from datetime import timedelta
+from mlpro.bf.systems import *
+from mlpro.bf.plot import *
+from mlpro.bf.math import *
+
+# Export list for public API
+__all__ = ['MultiCartPole']
 
 
 
@@ -295,5 +304,11 @@ class MultiCartPole (Environment):
 ## -------------------------------------------------------------------------------------------------
     def update_plot(self, **p_kwargs):
         for env in self._envs: env.update_plot( **p_kwargs )
+
+
+
+
+
+
 
 
