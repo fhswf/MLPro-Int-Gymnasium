@@ -129,26 +129,28 @@ training.run()
 ## -------------------------------------------------------------------------------------------------
 ## -------------------------------------------------------------------------------------------------
 # 3 Load the trained scenario for evaluation
-filename_scenario = training.get_scenario().get_filename()
 
 ## -------------------------------------------------------------------------------------------------
 if __name__ == '__main__':
     input('\n\nTraining finished. Press ENTER to apply the trained agent...\n')
 
-## -------------------------------------------------------------------------------------------------
-# 3.1 Load the trained scenario
-scenario = RubiksPPOScenario.load( p_path = training.get_training_path() + os.sep + 'scenario', 
-                             p_filename = filename_scenario )
+    ## -------------------------------------------------------------------------------------------------
+    # 3.1 Load the trained scenario
+    filename_scenario = training.get_scenario().get_filename()
+    scenario = RubiksPPOScenario.load( p_path = training.get_training_path() + os.sep + 'scenario', 
+                                       p_filename = filename_scenario )
 
-## -------------------------------------------------------------------------------------------------
-# 3.2 Reset Scenario
-scenario.reset()  
+    ## -------------------------------------------------------------------------------------------------
+    # 3.2 Reset Scenario
+    scenario.reset()  
+    scenario.get_model().switch_adaptivity(False)
 
-## -------------------------------------------------------------------------------------------------
-# 3.3 Run Scenario (using cycles for re-run/evaluation)
-print("\n--- Running Final Evaluation ---")
-scenario.set_cycle_limit(cycle_limit2)
-scenario.run()
+    ## -------------------------------------------------------------------------------------------------
+    # 3.3 Run Scenario (using cycles for re-run/evaluation)
+    print("\n--- Running Final Evaluation ---")
+    scenario.set_cycle_limit(cycle_limit2)
+    scenario.run()
+
 
 if __name__ != '__main__':
     from shutil import rmtree
