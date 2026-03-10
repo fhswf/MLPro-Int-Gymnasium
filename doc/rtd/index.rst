@@ -44,18 +44,26 @@ Before running the examples, please install the latest versions of MLPro, Gymnas
 
 .. toctree::
    :maxdepth: 2
-   :caption: Example Pool
+   :caption: Environments and Boards
    :glob:
 
-   content/01_example_pool/*
+   content/10_envs_boards/*
 
 
 .. toctree::
    :maxdepth: 2
-   :caption: API Reference
+   :caption: Example pool
    :glob:
 
-   content/02_api/*
+   content/20_example_pool/*
+
+
+.. toctree::
+   :maxdepth: 2
+   :caption: API reference
+   :glob:
+
+   content/30_api/*
 
 
 .. toctree::
@@ -63,4 +71,4 @@ Before running the examples, please install the latest versions of MLPro, Gymnas
    :caption: About
    :glob:
 
-   content/03_about/*
+   content/99_about/*

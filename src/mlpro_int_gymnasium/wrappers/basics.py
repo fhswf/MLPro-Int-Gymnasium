@@ -15,10 +15,11 @@
 ## -- 2024-06-11  1.0.6     SY       Update seeding
 ## -- 2024-10-01  1.0.7     SY       Refactoring due to errors in environments than classic control
 ## -- 2025-08-03  1.0.8     SY       Refactoring
+## -- 2026-03-10  1.0.9     DA       Stabilization of WrEnvGYM2MLPro._complete_state()
 ## -------------------------------------------------------------------------------------------------
 
 """
-Ver. 1.0.8 (2025-08-03)
+Ver. 1.0.9 (2026-03-10)
 
 This module provides wrapper classes for Gym environments from Farama-Foundation Gymnasium.
 
@@ -132,7 +133,10 @@ class WrEnvGYM2MLPro(Wrapper, Environment):
 
 ## -------------------------------------------------------------------------------------------------
     def _complete_state(self, p_path:str, p_os_sep:str, p_filename_stub:str):
-        self._gym_env = gym.make(self._gym_env_id, render_mode=self._gym_env_render_mode)
+        try:
+            self._gym_env = gym.make(self._gym_env_id, render_mode=self._gym_env_render_mode)
+        except:
+            self._gym_env = gym.make(self._gym_env_id)
 
 
 ## -------------------------------------------------------------------------------------------------

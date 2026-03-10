@@ -1,6 +1,6 @@
 .. _howtos_rl:
 Reinforcement Learning
-===========================
+======================
 
 .. toctree::
    :maxdepth: 1
