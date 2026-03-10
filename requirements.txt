@@ -1,3 +1,4 @@
 mlpro[full]>=2.1.0
+mlpro-int-sb3[full]>=1.0.7
 gymnasium>=0.29
 pygame>=2.1.3
