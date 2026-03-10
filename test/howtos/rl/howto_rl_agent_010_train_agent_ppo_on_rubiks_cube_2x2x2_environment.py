@@ -8,10 +8,11 @@
 ## -- 2026-02-26  0.0.0     DA       Initial preparation
 ## -- 2026-02-27  1.0.0     MTA      SB3 PPO implementation
 ## -- 2026-02-28  1.0.1     MTA      Released first version
+## -- 2026-03-10  1.0.2     MTA      Added final evaluation section
 ## -------------------------------------------------------------------------------------------------
 
 """
-Ver. 1.0.1 (2026-02-28)
+Ver. 1.0.2 (2026-03-10)
 
 This howto demonstrates how to train a Stable Baselines3 (SB3) PPO agent on the 2x2x2 Rubik's
 Cube environment using the MLPro RL training infrastructure.
@@ -34,7 +35,8 @@ from mlpro_int_sb3.wrappers import WrPolicySB32MLPro
 from mlpro_int_gymnasium.envs.rubikscube2x2x2 import RubiksCube222
 
 from stable_baselines3 import PPO
-import rubiks_cube_gym                           
+import rubiks_cube_gym      
+import os                     
 
 
 
@@ -97,6 +99,7 @@ class RubiksPPOScenario (RLScenario):
 if __name__ == '__main__':
     # 2.1 Parameters for interactive demo
     cycle_limit = 100
+    cycle_limit2 = 50
     logging     = Log.C_LOG_ALL
     visualize   = True
     path        = str(Path.home())
@@ -104,6 +107,7 @@ if __name__ == '__main__':
 else:
     # 2.2 Parameters for internal unit test
     cycle_limit = 10
+    cycle_limit2 = 5
     logging     = Log.C_LOG_NOTHING
     visualize   = False
     path        = None
@@ -121,3 +125,33 @@ training = RLTraining(
 )
 
 training.run()
+
+## -------------------------------------------------------------------------------------------------
+## -------------------------------------------------------------------------------------------------
+# 3 Load the trained scenario for evaluation
+filename_scenario = training.get_scenario().get_filename()
+
+## -------------------------------------------------------------------------------------------------
+if __name__ == '__main__':
+    input('\n\nTraining finished. Press ENTER to apply the trained agent...\n')
+
+## -------------------------------------------------------------------------------------------------
+# 3.1 Load the trained scenario
+scenario = RubiksPPOScenario.load( p_path = training.get_training_path() + os.sep + 'scenario', 
+                             p_filename = filename_scenario )
+
+## -------------------------------------------------------------------------------------------------
+# 3.2 Reset Scenario
+scenario.reset()  
+
+## -------------------------------------------------------------------------------------------------
+# 3.3 Run Scenario (using cycles for re-run/evaluation)
+print("\n--- Running Final Evaluation ---")
+scenario.set_cycle_limit(cycle_limit2)
+scenario.run()
+
+if __name__ != '__main__':
+    from shutil import rmtree
+    rmtree(training.get_training_path())
+else:
+    input( '\nPress ENTER to finish...')
