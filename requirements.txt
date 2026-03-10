@@ -1,5 +1,6 @@
 mlpro[full]>=2.1.0
 stable_baselines3>=2.7.1
+sb3_contrib>=2.7.1
 mlpro-int-sb3>=1.0.7
 gymnasium>=0.29
 pygame>=2.1.3
