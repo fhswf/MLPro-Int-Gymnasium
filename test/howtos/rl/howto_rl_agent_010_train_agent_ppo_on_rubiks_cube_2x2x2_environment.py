@@ -36,6 +36,8 @@ from mlpro_int_gymnasium.envs.rubikscube2x2x2 import RubiksCube222
 from stable_baselines3 import PPO
 import rubiks_cube_gym                           
 
+
+
 ## -------------------------------------------------------------------------------------------------
 ## -------------------------------------------------------------------------------------------------
 # 1  RL scenario

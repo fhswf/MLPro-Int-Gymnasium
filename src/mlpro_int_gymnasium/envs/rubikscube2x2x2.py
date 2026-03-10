@@ -8,11 +8,12 @@
 ## -- 2026-02-26  0.0.0     DA       Initial preparation
 ## -- 2026-02-27  1.0.0     MTA      Define evnvironment class
 ## -- 2026-02-28  1.0.1     MTA      Released first version
-## -- 2026-03-25  1.0.2     SFAB     Added ShapedRewardCubeWrapper
+## -- 2026-03-05  1.0.2     SFAB     Added ShapedRewardCubeWrapper
+## -- 2026-03-10  1.0.3     DA       Code review/stabilization of RubiksCube222._init_env()
 ## -------------------------------------------------------------------------------------------------
 
 """
-Ver. 1.0.2 (2026-03-25)
+Ver. 1.0.3 (2026-03-10)
 
 This module provides a standardized MLPro environment for a 2x2x2 Rubik's Cube based on the
 rubiks-cube-gym package (https://github.com/DoubleGremlin181/RubiksCubeGym).
@@ -25,22 +26,29 @@ Action space      : Discrete(3)       -- moves F=0, R=1, U=2
 Reward            : Defined by reward strategy. Default: -1 per step, +100 on solve.
 """
 
+
+from datetime import timedelta
+import random
+
+import numpy as np
+import gymnasium as gym
+
 from mlpro.rl.models import *
 from mlpro.bf import *
-from mlpro_int_gymnasium.wrappers import WrEnvGYM2MLPro
 from mlpro.bf.systems import *
 from mlpro.bf.various import Persistent
 from mlpro.bf.plot import *
 from mlpro.bf.math import *
-import gymnasium as gym
-from datetime import timedelta
-import rubiks_cube_gym
-import numpy as np
-import random
+#import rubiks_cube_gym
+
+from mlpro_int_gymnasium.wrappers import WrEnvGYM2MLPro
+
 
 
 # Export list for public API
-__all__ = ['ShapedRewardCubeWrapper', 'RubiksCube222']
+__all__ = ['RubiksCube222']
+
+
 
 ## -------------------------------------------------------------------------------------------------
 ## -------------------------------------------------------------------------------------------------
@@ -300,6 +308,10 @@ class ShapedRewardCubeWrapper (gym.Wrapper):
 
         return obs, info
     
+
+
+
+
 ## -------------------------------------------------------------------------------------------------
 ## -------------------------------------------------------------------------------------------------
 class RubiksCube222 (Environment):
@@ -350,7 +362,10 @@ class RubiksCube222 (Environment):
             return
 
         if self.get_visualization():
-            gym_env = gym.make('rubiks-cube-222-v0', render_mode='human')
+            try:
+                gym_env = gym.make('rubiks-cube-222-v0', render_mode='human')
+            except:
+                gym_env = gym.make('rubiks-cube-222-v0')
         else:
             gym_env = gym.make('rubiks-cube-222-v0')
 
