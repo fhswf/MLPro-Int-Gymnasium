@@ -29,7 +29,7 @@ PPO agent on the 2x2x2 Rubik's Cube environment using the MLPro RL training infr
 
 **Executable Code**
 
-.. literalinclude:: ../../../../../test/howtos/rl/howto_rl_agent_010_train_agent_ppo_on_rubiks_cube_2x2x2_environment.py
+.. literalinclude:: ../../../../../test/howtos/rl/howto_rl_agent_010_train_agent_ppo_on_rubiks_cube_2x2x2_environment.py.off
     :language: python
 
 
