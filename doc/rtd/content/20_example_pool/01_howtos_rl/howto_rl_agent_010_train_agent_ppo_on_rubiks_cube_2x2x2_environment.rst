@@ -55,10 +55,12 @@ The training log shows milestone progress printed to the console every 500 steps
     >>> LEVEL UP! Scramble length -> 2
     >>> SUCCESS! Cube Solved.
 
+
 The short demo below shows the visualisation window during a training run:
+
 .. image:: images/rubiks_cube_2x2x2_demo.gif
    :width: 500
-   :align: center
+
 
 **Cross Reference**
 

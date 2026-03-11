@@ -5,8 +5,7 @@ Rubik's Cube 2x2x2
 
 .. image:: images/rubiks_cube_2x2x2_demo.gif
    :width: 500
-   :align: center
-   :alt: 2x2x2 Rubik's Cube being solved by a PPO agent trained with MLPro
+
 
 
 The 2x2x2 Pocket Rubik's Cube is a combinatorial puzzle with **3,674,160 states** under the FRU move system (Front, Right, Upper face rotations). The goal is
